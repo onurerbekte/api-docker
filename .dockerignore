@@ -1,0 +1,17 @@
+.git
+.github
+.venv
+node_modules
+__pycache__
+.pytest_cache
+.env
+.env.*
+*.pem
+*.key
+secrets
+credentials*.json
+token*.json
+data
+*.sqlite*
+*.db
+*.log
