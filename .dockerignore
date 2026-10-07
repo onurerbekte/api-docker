@@ -11,6 +11,14 @@ __pycache__
 secrets
 credentials*.json
 token*.json
+token.*
+tokens.*
+api_key.*
+apikey.*
+secrets.*
+credentials.*
+*.p12
+*.pfx
 data
 *.sqlite*
 *.db
