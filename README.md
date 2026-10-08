@@ -10,7 +10,7 @@ docker compose config
 docker build --target test -t inventory-api-test .
 docker compose up --build -d --wait
 ```
-API: `http://127.0.0.1:8000/docs`; sağlık: `/health`. Durdurma: `docker compose down` (volume korunur). Veriyi saklamak istiyorsan `down -v` kullanma; volume'u siler. Docker ile çalıştırıldı, temel istekler elle test edildi. Kullanıcının 8 Ekim 2026 tarihli bildirimi: Docker Desktop ile `docker compose up` sonrasında konteyner healthy oldu, `http://localhost:8000/docs` açıldı; `GET /health` 200, `GET /products` 200 ve `POST /products` 201 döndü. `docker compose down` ile kapatıldı. PATCH, DELETE ve /summary elle denenmedi; otomatik API testleriyle doğrulandı. Yerel Python testi:
+API: `http://127.0.0.1:8000/docs`; sağlık: `/health`. Durdurma: `docker compose down` (volume korunur). Veriyi saklamak istiyorsan `down -v` kullanma; volume'u siler.  Yerel Python testi:
 ```powershell
 python -m pip install -r requirements-dev.txt
 python -m pytest -q
@@ -20,6 +20,12 @@ python -m pytest -q
 ## English
 The test/Docker version of project c's FastAPI + SQLite API. Identical source and tests are copied into this independent Git folder; this is not a separate commercial client engagement. Multi-stage Docker builds require passing tests before producing the non-root runtime. Compose persists SQL data in a named volume and binds the host port to 127.0.0.1 only.
 
-With Docker Desktop/Compose running, use the commands above and open `/docs` on port 8000. Stop using `docker compose down` to preserve the volume; `down -v` removes stored data. Run with Docker; basic requests were manually tested. According to the author’s report dated 8 October 2026, `docker compose up` with Docker Desktop produced a healthy container; `http://localhost:8000/docs` opened; `GET /health` returned 200, `GET /products` 200 and `POST /products` 201. The stack was stopped with `docker compose down`. PATCH, DELETE and /summary were not manually exercised; they were validated by automated API tests. Local Python tests can be run using the dev requirements.
+With Docker Desktop/Compose running, use the commands above and open `/docs` on port 8000. Stop using `docker compose down` to preserve the volume; `down -v` removes stored data.  Local Python tests can be run using the dev requirements.
 
 The CI workflow will test Python, validate Compose, build/run the image, and smoke-test health after you upload the repository. It was not run here. Git and Docker ignore local secrets, environment files, and databases. No authentication; not a public production service.
+
+## Doğrulama notu / Verification note
+
+Mola sitesi Opera'da elle açılıp görsel olarak kontrol edildi. Telegram botu gerçek botla elle test edildi. Chrome eklentisi Opera'da elle test edildi. Docker projesi Docker Desktop ile çalıştırıldı; GET /health, GET /products ve POST /products elle denendi. OpenAI projesi anahtarsız demo modunda. Mobil cihaz testi yapıldı; yalnızca Android/iOS/web paketleri derlendi.
+
+The Mola website was manually opened and visually checked in Opera. The Telegram bot was manually tested with a real bot. The Chrome extension was manually tested in Opera. The Docker project was run with Docker Desktop; GET /health, GET /products and POST /products were manually exercised. The OpenAI project is in key-free demo mode. Mobile device testing was performed; only Android/iOS/web bundles were built.

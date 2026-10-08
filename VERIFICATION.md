@@ -1,23 +1,5 @@
 # Doğrulama / Verification
-c) API kaynak ve test dosyaları aynı tutuldu / API source and tests match project c.
 
-Yerel API testleri: **9 passed** / Local API tests: **9 passed**.
+Mola sitesi Opera'da elle açılıp görsel olarak kontrol edildi. Telegram botu gerçek botla elle test edildi. Chrome eklentisi Opera'da elle test edildi. Docker projesi Docker Desktop ile çalıştırıldı; GET /health, GET /products ve POST /products elle denendi. OpenAI projesi anahtarsız demo modunda. Mobil cihaz testi yapıldı; yalnızca Android/iOS/web paketleri derlendi.
 
-YAML dosyaları ayrıştırıldı ve temel ayarlar kontrol edildi / YAML parsed and basic configuration checked.
-
-## Docker Desktop elle testi / Docker Desktop manual testing
-
-8 Ekim / October 2026 — Docker ile çalıştırıldı, temel istekler elle test edildi. / Run with Docker; basic requests were manually tested.
-
-Kaynak: kullanıcının bu sohbetteki test bildirimi; asistan Docker Desktop’a bağlanmadı. / Source: the author’s test report in this chat; the assistant did not connect to Docker Desktop.
-
-- docker compose up: konteyner healthy / container healthy.
-- http://localhost:8000/docs: açıldı / opened.
-- GET /health: 200.
-- GET /products: 200.
-- POST /products: 201.
-- docker compose down: kapatıldı / stack stopped.
-
-PATCH, DELETE ve /summary elle denenmedi; mevcut dokuz API testiyle doğrulandı. / PATCH, DELETE and /summary were not manually exercised; validated with the existing nine API tests.
-
-Named volume yeniden başlatma sonrası kalıcılığı ve GitHub Actions çalışması ayrıca doğrulanmadı. / Named-volume persistence across restarts and GitHub Actions execution have not been separately verified.
+The Mola website was manually opened and visually checked in Opera. The Telegram bot was manually tested with a real bot. The Chrome extension was manually tested in Opera. The Docker project was run with Docker Desktop; GET /health, GET /products and POST /products were manually exercised. The OpenAI project is in key-free demo mode. Mobile device testing was performed; only Android/iOS/web bundles were built.
